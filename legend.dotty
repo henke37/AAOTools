@@ -1,0 +1,95 @@
+digraph Trial {
+3 [label="Set gameover"]
+a3 [label="Game over",color="red"]
+3 -> a3 [label="Game over",style="dashed",color="red"]
+4 [label="Begining of a crossexamination",color="#FF8000"];
+3 -> 4
+5 [label="Crossexamination statement"];
+4 -> 5 []
+6 [label="Initially hidden crossexamination statement",color="blue",style="dashed"]
+5 -> 6
+7 [label="Coconsil talk"]
+6->7
+6 -> 7 [label="Skip to if hidden",color="blue",style="dashed"]
+7->4 [label="Return from crossexamination",style="dotted"]
+8 [label="Pressing conversation"]
+5->8 [label="Pressing jump",color="#666666"]
+
+a8 [label="show statement"]
+8->a8
+a8 -> 6 [color="yellow",label="Visibility change",constraint="false"]
+
+b8 [label="normal text"]
+a8-> b8
+b8 -> 6 [label="Return from crossexamination",style="dotted"]
+
+
+9 [label="Wrong present"]
+4->9 [label="Wrong evidence",color="red"]
+9->4 [label="Return from crossexamination",style="dotted"]
+10 [label="normal text"]
+6 -> 10 [label="Contradiction",style="bold"]
+11 [color="green",label="Begining of a location"];
+10 -> 11
+12 [color="blue",style="dashed",label="Location intro skip"]
+11 -> 12 
+
+
+13 [label="Location intro"]
+12 -> 13 [label="Skip to if hidden",color="blue",style="dashed"]
+13 -> 12 [color="yellow",label="Visibility change",constraint="false"]
+
+14 [label="Location menu"]
+12 -> 14 [label="Jump",arrowtail="oinv"]
+13 -> 14
+
+15 [label="Examine picture"]
+14->15
+
+16 [label="Nothing there"]
+15->16 [label="Wrong area",color="red"]
+16->14 [label="Jump",arrowtail="oinv"]
+
+17 [label="Something there"]
+15->17 [label="Correct area",color="green"]
+17->14 [label="Jump",arrowtail="oinv"]
+
+18 [label="Present evidence"]
+14 -> 18
+
+19 [label="Wrong evidence"]
+19->14 [label="Jump",arrowtail="oinv"]
+18->19 [label="Other evidence",color="red"]
+
+20 [label="Correct evidence"]
+20->14 [label="Jump",arrowtail="oinv"]
+18->20 [label="Correct evidence",color="green"]
+
+21 [label="Talk menu"]
+14->21
+
+22 [label="Talk subject"]
+21->22 [color="#FF8000",label="Talk subject"]
+22->21 [label="Jump",arrowtail="oinv"]
+
+23 [label="Psychelock begins",color="purple"]
+21 -> 23 [color="purple",label="Psychelock"]
+
+24 [label="Psychelock evidence prompt"]
+23 -> 24
+24 -> 21 [label="Exit",style="dotted",color="#666666"]
+
+25 [label="Psychelock ends"]
+24 -> 25 [label="Correct evidence",color="green"]
+25 -> 21 [label="Return from psychelock",style="dotted"]
+
+26 [label="Bad evidence"]
+24 -> 26 [label="Wrong evidence",color="red"]
+26 -> 24 [label="Jump",arrowtail="oinv"]
+
+27 [label="Move prompt"]
+14 -> 27
+
+28 [label="Begining of location",color="green"]
+27 -> 28 [color="#9C5A3C",label="Move to location"]
+}
