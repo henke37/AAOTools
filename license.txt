@@ -1,0 +1,6 @@
+Give credit if you use this to build any software. You do not have to provide any credit if you just use it as a tool for editing trials.
+Do not add any html import engine, there is no need to do so and would just be copyright violation bait.
+No waranties are provided, if stuff breaks (where stuff includes this toolkit and anything touched by it), I have no obligations to fix it.
+No selling this software.
+No online redistrubution of this software, offline is ok.
+Changed versions (as in the packaged files) may not be distrubuted at all without prior permission.
